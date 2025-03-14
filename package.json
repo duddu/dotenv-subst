@@ -1,0 +1,56 @@
+{
+  "name": "dotenv-subst",
+  "version": "0.0.0",
+  "description": "[@TODO]",
+  "homepage": "https://dotenv-subst.duddu.dev",
+  "license": "BSD-3-Clause",
+  "author": "@duddu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duddu/dotenv-subst.git"
+  },
+  "bugs": {
+    "url": "https://github.com/duddu/dotenv-subst/issues"
+  },
+  "type": "module",
+  "main": "src/lib/main.js",
+  "scripts": {
+    "start": "node build/src/main.js",
+    "clean": "rimraf coverage build tmp",
+    "prebuild": "npm run lint",
+    "build": "tsc -p tsconfig.json",
+    "build:watch": "tsc -w -p tsconfig.json",
+    "build:release": "npm run clean && tsc -p tsconfig.release.json",
+    "lint": "eslint . && npm run prettier:check",
+    "test": "vitest run unit --config tests/vitest.config.ts",
+    "test:watch": "vitest unit",
+    "test:coverage": "npm test -- --coverage.enabled --coverage.all",
+    "prettier": "prettier \"{src,tests}/**/*.{ts,mts}\"",
+    "prettier:check": "npm run prettier -- --check",
+    "prettier:write": "npm run prettier -- --write"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22",
+    "@types/node": "^22",
+    "@typescript-eslint/parser": "^8.26",
+    "@vitest/coverage-v8": "^3.0",
+    "@vitest/eslint-plugin": "^1.1",
+    "eslint": "^9.22",
+    "eslint-config-prettier": "^10.1",
+    "globals": "^16.0",
+    "prettier": "^3.5",
+    "rimraf": "^6.0",
+    "ts-api-utils": "^2.0",
+    "typescript": "^5.8",
+    "typescript-eslint": "^8.26",
+    "vitest": "^3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "engines": {
+    "node": ">= 22.14 < 24"
+  }
+}
