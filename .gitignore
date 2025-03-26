@@ -1,4 +1,5 @@
 .DS_Store
+.env*
 .eslintcache
 .idea
 .npm
@@ -20,3 +21,4 @@ logs
 node_modules/
 pids
 report.*.json
+/tmp/

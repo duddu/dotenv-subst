@@ -1,5 +1,9 @@
 {
+  "insertPragma": false,
+  "objectWrap": "preserve",
   "parser": "typescript",
+  "printWidth": 80,
+  "proseWrap": "preserve",
   "semi": true,
   "singleQuote": true,
   "trailingComma": "all"
