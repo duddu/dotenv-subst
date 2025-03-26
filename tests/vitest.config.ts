@@ -5,14 +5,17 @@ import {
 } from 'vitest/config';
 
 export default defineConfig({
+  clearScreen: false,
   test: {
-    exclude: [...configDefaults.exclude, 'build/**/*'],
     coverage: {
-      provider: 'v8',
       exclude: [...coverageConfigDefaults.exclude, 'build/**/*'],
+      include: ['src/**/*'],
+      provider: 'v8',
     },
+    exclude: [...configDefaults.exclude, 'build/**/*'],
     reporters: process.env.GITHUB_ACTIONS
       ? ['verbose', 'github-actions']
       : ['verbose'],
+    watch: false,
   },
 });

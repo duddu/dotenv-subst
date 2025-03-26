@@ -2,6 +2,8 @@ import { exec } from 'node:child_process';
 import { promisify } from 'node:util';
 import { beforeEach, describe, expect, it } from 'vitest';
 
+import pkg from '../../src/shared/package.js';
+
 describe('cli', () => {
   describe('comparing command help info with dotenvx', () => {
     const sharedOptsEntries: [string, RegExp][] = [
@@ -25,10 +27,10 @@ describe('cli', () => {
     beforeEach(async () => {
       [{ stdout: dotenvxStdout }, { stdout: dotenvSubstStdout }] =
         await Promise.all([
-          promisify(exec)('node ./node_modules/.bin/dotenvx run -h', {
+          promisify(exec)(`node ${pkg.bin['dotenv-subst']} --help`, {
             encoding: 'utf-8',
           }),
-          promisify(exec)('node ./build/cli/dotenv-subst.js -h', {
+          promisify(exec)('node ./node_modules/.bin/dotenvx run --help', {
             encoding: 'utf-8',
           }),
         ]);

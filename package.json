@@ -26,10 +26,14 @@
     "dotenvsubst": "./build/cli/dotenv-subst.js"
   },
   "scripts": {
+    "test": "vitest -c tests/vitest.config.ts",
     "pretest": "rimraf coverage tmp",
-    "test": "vitest run --config tests/vitest.config.ts",
-    "test:watch": "vitest",
-    "test:coverage": "npm test -- --coverage.enabled --coverage.all",
+    "test:watch": "npm test -- -w",
+    "test:coverage": "npm test -- --coverage.enabled",
+    "test:e2e": "npm test -- e2e",
+    "test:unit": "npm test -- unit",
+    "test:integration": "npm test -- integration",
+    "pretest:integration": "npm run build",
     "build": "tsc",
     "build:watch": "npm run build -- -w",
     "build:release": "npm run build -- -p tsconfig.release.json",
