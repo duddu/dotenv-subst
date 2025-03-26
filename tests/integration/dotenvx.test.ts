@@ -4,20 +4,20 @@ import { beforeEach, describe, expect, it } from 'vitest';
 
 import pkg from '../../src/shared/package.js';
 
-describe('cli', () => {
-  describe('comparing command help info with dotenvx', () => {
+describe('dotenvx', () => {
+  describe('command line help info', () => {
     const sharedOptsEntries: [string, RegExp][] = [
       [
         '--env-file',
         /^\s+-f, --env-file <paths...>\s+path\(s\)\s+to\s+your\s+env\s+file\(s\)\s+\(default:\s+\[\]\)/m,
       ],
       [
-        '--convention',
-        /^\s+--convention <name>\s+load\s+a\s+.env\s+convention\s+\(available\s+conventions:\s+\['nextjs', 'flow'\]\)/m,
-      ],
-      [
         '--env-keys-file',
         /^.+\s+--env-keys-file <path>\s+path\s+to\s+your\s+.env.keys\s+file\s+\(default:\s+same\s+path\s+as\s+your\s+env\s+file\)/m,
+      ],
+      [
+        '--convention',
+        /^\s+--convention <name>\s+load\s+a\s+.env\s+convention\s+\(available\s+conventions:\s+\['nextjs', 'flow'\]\)/m,
       ],
     ];
 
@@ -37,7 +37,7 @@ describe('cli', () => {
     });
 
     sharedOptsEntries.map(([optionFlag, optionRegExp]) => {
-      it(`specs for ${optionFlag} opt should match`, () => {
+      it(`specifications for ${optionFlag} should match`, () => {
         expect(dotenvxStdout).toMatch(optionRegExp);
         expect(dotenvSubstStdout).toMatch(optionRegExp);
       });
