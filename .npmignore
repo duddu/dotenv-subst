@@ -18,12 +18,14 @@
 *.tsbuildinfo
 /docs/
 /src/
+/tests/
+/tmp/
 coverage
+eslint.config.*
 lib-cov
 logs
 node_modules/
 pids
 report.*.json
-tests/
-tsconfig.json
+tsconfig*.json
 typedoc.json

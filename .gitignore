@@ -15,10 +15,10 @@
 *.tgz
 *.tsbuildinfo
 /dist/
+/tmp/
 coverage
 lib-cov
 logs
 node_modules/
 pids
 report.*.json
-/tmp/
