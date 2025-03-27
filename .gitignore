@@ -14,7 +14,7 @@
 *.seed
 *.tgz
 *.tsbuildinfo
-/build/
+/dist/
 coverage
 lib-cov
 logs

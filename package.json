@@ -19,11 +19,11 @@
     "node": ">= 22.14 < 24"
   },
   "type": "module",
-  "main": "build/main.js",
-  "types": "build/main.d.ts",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
   "bin": {
-    "dotenv-subst": "./build/cli/dotenv-subst.js",
-    "dotenvsubst": "./build/cli/dotenv-subst.js"
+    "dotenv-subst": "./dist/cli/dotenv-subst.js",
+    "dotenvsubst": "./dist/cli/dotenv-subst.js"
   },
   "scripts": {
     "test": "vitest -c tests/vitest.config.ts",
@@ -37,7 +37,7 @@
     "build": "tsc",
     "build:watch": "npm run build -- -w",
     "build:release": "npm run build -- -p tsconfig.release.json",
-    "prebuild:release": "npm run lint && rimraf build",
+    "prebuild:release": "npm run lint && rimraf dist",
     "lint": "eslint . && npm run prettier:check",
     "prettier": "prettier '**/*.(m)?{j,t}s'",
     "prettier:check": "npm run prettier -- -c",
@@ -50,7 +50,7 @@
   "devDependencies": {
     "@commander-js/extra-typings": "^13.1.0",
     "@eslint/js": "^9.23",
-    "@types/node": "^22.13.13",
+    "@types/node": "^22.13.14",
     "@typescript-eslint/parser": "^8.28",
     "@vitest/coverage-v8": "^3.0.9",
     "@vitest/eslint-plugin": "^1.1.38",
@@ -62,7 +62,7 @@
     "ts-api-utils": "^2.1",
     "typescript": "^5.8",
     "typescript-eslint": "^8.28",
-    "vitest": "^3.0.0"
+    "vitest": "^3.0.9"
   },
   "config": {
     "commitizen": {

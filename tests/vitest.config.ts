@@ -8,11 +8,11 @@ export default defineConfig({
   clearScreen: false,
   test: {
     coverage: {
-      exclude: [...coverageConfigDefaults.exclude, 'build/**/*'],
+      exclude: [...coverageConfigDefaults.exclude, 'dist/**/*'],
       include: ['src/**/*'],
       provider: 'v8',
     },
-    exclude: [...configDefaults.exclude, 'build/**/*'],
+    exclude: [...configDefaults.exclude, 'dist/**/*'],
     reporters: process.env.GITHUB_ACTIONS
       ? ['verbose', 'github-actions']
       : ['verbose'],
