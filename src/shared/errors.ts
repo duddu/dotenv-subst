@@ -9,7 +9,7 @@ export type DotenvSubstErrorCode =
   | 'FS_OPERATION_FAILED'
   | 'INTERPOLATION_FAILED';
 
-class DotenvSubstError extends Error {
+export class DotenvSubstError extends Error {
   public readonly code: DotenvSubstErrorCode;
 
   constructor(code: DotenvSubstErrorCode, message: string, cause?: unknown) {

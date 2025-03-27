@@ -4,47 +4,55 @@ import lib, { type DotenvSubstOutput } from '../../src/lib/index.js';
 import {
   isDotenvSubstError,
   isDotenvSubstErrorWithCode,
+  DotenvSubstError,
   type DotenvSubstErrorCode,
 } from '../../src/shared/errors.js';
 import type { DotenvSubstOptions } from '../../src/shared/options.js';
 
-import * as _exports from '../../src/main.js';
+import * as main from '../../src/main.js';
 
 describe('main', () => {
   describe('exports', () => {
+    expect(Object.keys(main)).toHaveLength(3);
+
     it('default', () => {
-      expect(_exports.default).toBe(lib);
+      expect(main.default).toBe(lib);
     });
 
     it(isDotenvSubstError, () => {
-      expect(_exports.isDotenvSubstError).toBe(isDotenvSubstError);
+      expect(main.isDotenvSubstError).toBe(isDotenvSubstError);
     });
 
     it(isDotenvSubstErrorWithCode, () => {
-      expect(_exports.isDotenvSubstErrorWithCode).toBe(
-        isDotenvSubstErrorWithCode,
-      );
+      expect(main.isDotenvSubstErrorWithCode).toBe(isDotenvSubstErrorWithCode);
     });
 
-    it('DotenvSubstErrorCode', () => {
+    it(`type ${DotenvSubstError.name}`, () => {
+      expect(main).not.toHaveProperty(DotenvSubstError.name);
+      const testErr = new DotenvSubstError('INTERPOLATION_FAILED', 'msgStub');
+      const testErrExp: main.DotenvSubstError = testErr;
+      expect(testErrExp).toBe(testErr); // only ensuring type is correctly exported
+    });
+
+    it('type DotenvSubstErrorCode', () => {
       const testCode: DotenvSubstErrorCode = 'INTERPOLATION_FAILED';
-      const testCodeExp: _exports.DotenvSubstErrorCode = testCode;
-      expect(testCodeExp).toBe(testCode);
+      const testCodeExp: main.DotenvSubstErrorCode = testCode;
+      expect(testCodeExp).toBe(testCode); // only ensuring type is correctly exported
     });
 
-    it('DotenvSubstOptions', () => {
+    it('type DotenvSubstOptions', () => {
       const testOpts: DotenvSubstOptions = { source: 'srcStub' };
-      const testOptsExp: _exports.DotenvSubstOptions = testOpts;
-      expect(testOptsExp).toBe(testOpts);
+      const testOptsExp: main.DotenvSubstOptions = testOpts;
+      expect(testOptsExp).toBe(testOpts); // only ensuring type is correctly exported
     });
 
-    it('DotenvSubstOutput', () => {
+    it('type DotenvSubstOutput', () => {
       const testOutput: DotenvSubstOutput = {
         outputPath: 'pathStub',
         interpolatedContent: 'contentStub',
       };
-      const testOutputExp: _exports.DotenvSubstOutput = testOutput;
-      expect(testOutputExp).toBe(testOutput);
+      const testOutputExp: main.DotenvSubstOutput = testOutput;
+      expect(testOutputExp).toBe(testOutput); // only ensuring type is correctly exported
     });
   });
 });
