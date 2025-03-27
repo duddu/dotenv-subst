@@ -16,6 +16,7 @@ export default defineConfig({
     reporters: process.env.GITHUB_ACTIONS
       ? ['verbose', 'github-actions']
       : ['verbose'],
+    slowTestThreshold: 450,
     watch: false,
   },
 });
