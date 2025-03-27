@@ -6,45 +6,46 @@ export const config = {
   args: {
     source: new Argument(
       '<source...>',
-      'path to file(s) containing variables to interpolate',
+      'path to the source file(s) containing variable placeholders for interpolation',
     ),
   },
   opts: {
     output: new Option(
       '-o, --output <path>',
-      '(optional, when a single source file is provided) path for the generated interpolated file (default: same as source, i.e. interpolation done in-place)',
+      '(for single source file only) optional output file path - defaults to in-place interpolation',
     ),
     envFile: new Option(
       '-f, --env-file <paths...>',
-      "path(s) to your env file(s) (default: []) - same as dotenvx config's path option",
+      "path(s) to your env file(s) (default: []) - see dotenvx config path option",
     ),
     ignoreUnsetVars: new Option(
       '--ignore-unset-vars',
-      'suppress errors when the source file(s) contain variables not defined in your env file(s)',
+      'do not abort if the source file(s) contain any variables not defined in the env file(s)',
     ),
     encoding: new Option(
       '--encoding <name>',
-      `encoding of your source and env file(s) (default: '${defaultOptions.encoding}') - same as dotenvx config's encoding option`,
+      `encoding of your source and env file(s) (default: '${defaultOptions.encoding}') - see dotenvx config encoding option`,
     ),
     envKeysFile: new Option(
       '--env-keys-file <path>',
-      "path to your .env.keys file (default: same path as your env file) - same as dotenvx config's envKeysFile option",
+      "path to your .env.keys file (default: same path as your env file) - see dotenvx config envKeysFile option",
     ),
     convention: new Option(
       '--convention <name>',
-      "load a .env convention (available conventions: ['nextjs', 'flow']) - same as dotenvx config's convention option",
+      "load a .env convention (available conventions: ['nextjs', 'flow']) - see dotenvx config convention option",
     ),
     verbose: new Option(
       '-v, --verbose',
-      "sets log level to verbose - same as dotenvx config's verbose option",
+      "sets log level to verbose - see dotenvx config verbose option",
     ),
     quiet: new Option(
       '-q, --quiet',
-      "sets log level to error - same as dotenvx config's quiet option",
+      "sets log level to error - see dotenvx config quiet option",
     ),
   },
 };
 
 export const helpText = {
-  afterAll: '', // @TODO
+  // @TODO link to examples and docs
+  afterAll: '',
 };

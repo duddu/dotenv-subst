@@ -12,7 +12,6 @@ import { parseEncoding } from './command/parsers.js';
 const program = new Command()
   .name(pkg.name)
   .description(pkg.description)
-  .aliases(Object.keys(pkg.bin).filter((bin) => bin !== pkg.name))
   .allowExcessArguments(false)
   .allowUnknownOption(false)
   .combineFlagAndOptionalValue(false)
