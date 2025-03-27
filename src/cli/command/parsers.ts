@@ -1,10 +1,9 @@
-import { throwError } from '../../shared/errors.js';
+import { InvalidOptionArgumentError } from '@commander-js/extra-typings';
 
 export function parseEncoding(value: string): BufferEncoding | undefined {
   if (!Buffer.isEncoding(value)) {
-    throwError(
-      'INVALID_OPTION',
-      `invalid value '${value}' provided for encoding option, expecting BufferEncoding`,
+    throw new InvalidOptionArgumentError(
+      `the encoding option must be a valid BufferEncoding type.`,
     );
   }
   return value;
