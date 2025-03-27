@@ -22,7 +22,7 @@ export function getInterpolatedContent(
     } else {
       throwError(
         'INTERPOLATION_FAILED',
-        'variable capture failed during interpolation //@TODO',
+        'no variable capture group matched during interpolation, aborting',
       );
     }
 
@@ -35,7 +35,7 @@ export function getInterpolatedContent(
     if (ignoreUnsetVars === false) {
       throwError(
         'INTERPOLATION_FAILED',
-        `cannot interpolate the variahle named '${varName}' as it's not defined in the env file(s) provided (hint: enable the 'ignoreUnsetVars' flag to ignore)`,
+        `unset variable '${varName}', i.e. not defined in the env file(s) provided (hint: enable the 'ignoreUnsetVars' flag to bypass)`,
       );
     }
 
