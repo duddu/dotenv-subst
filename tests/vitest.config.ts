@@ -9,6 +9,7 @@ export default defineConfig({
   test: {
     coverage: {
       exclude: [...coverageConfigDefaults.exclude, 'dist/**/*'],
+      reporter: [...coverageConfigDefaults.reporter, 'lcovonly'],
       include: ['src/**/*'],
       provider: 'v8',
     },
@@ -16,7 +17,7 @@ export default defineConfig({
     reporters: process.env.GITHUB_ACTIONS
       ? ['verbose', 'github-actions']
       : ['verbose'],
-    slowTestThreshold: 450,
+    slowTestThreshold: 400,
     watch: false,
   },
 });

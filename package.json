@@ -34,14 +34,15 @@
     "test:unit": "npm test -- unit",
     "test:integration": "npm test -- integration",
     "pretest:integration": "npm run build",
+    "lint": "eslint . && npm run prettier:check",
+    "prettier": "prettier '**/*.(m)?{j,t}s'",
+    "prettier:check": "npm run prettier -- -c",
+    "prettier:write": "npm run prettier -- -w",
     "build": "tsc",
     "build:watch": "npm run build -- -w",
     "build:release": "npm run build -- -p tsconfig.release.json",
     "prebuild:release": "npm run lint && rimraf dist",
-    "lint": "eslint . && npm run prettier:check",
-    "prettier": "prettier '**/*.(m)?{j,t}s'",
-    "prettier:check": "npm run prettier -- -c",
-    "prettier:write": "npm run prettier -- -w"
+    "prepublishOnly": "npm audit signatures && npm test && npm run build:release"
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.39.0",
@@ -50,6 +51,7 @@
   "devDependencies": {
     "@commander-js/extra-typings": "^13.1.0",
     "@eslint/js": "^9.23",
+    "@semantic-release/git": "^10.0.1",
     "@types/node": "^22.13.14",
     "@typescript-eslint/parser": "^8.28",
     "@vitest/coverage-v8": "^3.0.9",
@@ -59,7 +61,6 @@
     "globals": "^16.0",
     "prettier": "^3.5",
     "rimraf": "^6.0",
-    "ts-api-utils": "^2.1",
     "typescript": "^5.8",
     "typescript-eslint": "^8.28",
     "vitest": "^3.0.9"
