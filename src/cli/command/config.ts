@@ -12,40 +12,40 @@ export const config = {
   opts: {
     output: new Option(
       '-o, --output <path>',
-      '(for single source file only) optional output file path - defaults to in-place interpolation',
+      '(only valid for single source file) optional output file path - defaults to in-place interpolation',
     ),
     envFile: new Option(
       '-f, --env-file <paths...>',
-      "path(s) to your env file(s) (default: []) - see dotenvx config path option",
+      'path(s) to your env file(s) (default: []) - forwarded directly to dotenvx',
     ),
     ignoreUnsetVars: new Option(
       '--ignore-unset-vars',
-      'do not abort if the source file(s) contain any variables not defined in the env file(s)',
+      'do not abort if source file(s) contain variables not defined in env file(s)',
     ),
     encoding: new Option(
       '--encoding <name>',
-      `encoding of your source and env file(s) (default: '${defaultOptions.encoding}') - see dotenvx config encoding option`,
+      `encoding of your source and env file(s) (default: '${defaultOptions.encoding}') - forwarded to dotenvx`,
     ),
     envKeysFile: new Option(
       '--env-keys-file <path>',
-      "path to your .env.keys file (default: same path as your env file) - see dotenvx config envKeysFile option",
+      'path to your .env.keys file (default: same path as your env file) - forwarded directly to dotenvx',
     ),
     convention: new Option(
       '--convention <name>',
-      "load a .env convention (available conventions: ['nextjs', 'flow']) - see dotenvx config convention option",
+      "load a .env convention (available conventions: ['nextjs', 'flow']) - forwarded directly to dotenvx",
     ),
     verbose: new Option(
       '-v, --verbose',
-      "sets log level to verbose - see dotenvx config verbose option",
+      'sets log level to verbose - forwarded to dotenvx',
     ),
     quiet: new Option(
       '-q, --quiet',
-      "sets log level to error - see dotenvx config quiet option",
+      'sets log level to error - forwarded to dotenvx',
     ),
   },
 };
 
 export const helpText = {
-  // @TODO link to examples and docs
-  afterAll: '',
+  afterAll:
+    '\nMore info and usage examples available here: https://github.com/duddu/dotenv-subst?tab=readme-ov-file#-cli-usage',
 };
