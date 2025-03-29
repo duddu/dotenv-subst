@@ -70,5 +70,8 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
