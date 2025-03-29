@@ -1,6 +1,6 @@
 {
   "name": "dotenv-subst",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A CLI tool and library for interpolating variables in any file, using .env files (or any key=value format) to define replacement values.",
   "homepage": "https://dotenv-subst.duddu.dev",
   "license": "BSD-3-Clause",
