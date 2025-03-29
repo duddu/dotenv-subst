@@ -6,9 +6,7 @@ export default new E2eTestConfig({
   files: {
     input: {
       'cillum_eu.properties':
-        'OCCAECAT=mollit dolor anim\n' +
-        'DESERUNT=\n' +
-        'CUPIDATAT',
+        'OCCAECAT=mollit dolor anim\nDESERUNT=\nCUPIDATAT',
       'irure_quis.txt':
         'OCCAECAT\'s value is: ${OCCAECAT}; whereas DESERUNT is empty: "${DESERUNT}".\n' +
         'Since CUPIDATAT is declared but not assigned in cillum_eu.properties, and ' +

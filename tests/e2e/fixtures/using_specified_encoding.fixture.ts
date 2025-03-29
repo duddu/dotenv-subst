@@ -9,7 +9,7 @@ export default new E2eTestConfig({
       'quis_magnavi.rtf': 'Ǿ deserunt elit ${NON_LABORIS} aliquip Ĳ',
     },
     output: {
-      'quis_magnavi.rtf': 'G> deserunt elit ! \' S q ~ aliquip D2',
+      'quis_magnavi.rtf': "G> deserunt elit ! ' S q ~ aliquip D2",
     },
   },
 });
