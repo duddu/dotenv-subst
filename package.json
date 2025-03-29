@@ -42,7 +42,8 @@
     "build:watch": "npm run build -- -w",
     "build:release": "npm run build -- -p tsconfig.release.json",
     "prebuild:release": "npm run lint && rimraf dist",
-    "prepublishOnly": "npm audit signatures && npm test && npm run build:release"
+    "release": "semantic-release",
+    "prepublishOnly": "npm audit signatures && npm run build:release && npm test"
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.39.0",
