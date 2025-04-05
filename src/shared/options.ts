@@ -5,7 +5,7 @@ import { coerceToArray, isNonEmptyString, type PickRequired } from './utils.js';
 
 export type DotenvConfigOptionsInherited = Pick<
   DotenvConfigOptions,
-  'envKeysFile' | 'DOTENV_KEY' | 'convention' | 'quiet' | 'verbose'
+  'envKeysFile' | 'DOTENV_KEY' | 'overload' | 'convention' | 'quiet' | 'verbose'
 >;
 
 export type DotenvSubstOptions = {

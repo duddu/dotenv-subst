@@ -1,38 +1,36 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 
+import { config } from '../../src/cli/command/config.js';
 import { runNodeExecutable } from './integration-utils.js';
 
 describe('dotenvx cli', () => {
   describe('command help information', () => {
-    const sharedOptsEntries: [string, RegExp][] = [
-      [
-        '--env-file',
-        /^\s+-f, --env-file <paths...>\s+path\(s\)\s+to\s+your\s+env\s+file\(s\)\s+\(default:\s+\[\]\)/m,
-      ],
-      [
-        '--env-keys-file',
-        /^.+\s+--env-keys-file <path>\s+path\s+to\s+your\s+.env.keys\s+file\s+\(default:\s+same\s+path\s+as\s+your\s+env\s+file\)/m,
-      ],
-      [
-        '--convention',
-        /^\s+--convention <name>\s+load\s+a\s+.env\s+convention\s+\(available\s+conventions:\s+\['nextjs', 'flow'\]\)/m,
-      ],
-    ];
+    let dotenvxHelpStdout: string;
 
-    let dotenvxStdout: string;
-    let dotenvSubstStdout: string;
-
-    beforeEach(async () => {
-      [dotenvxStdout, dotenvSubstStdout] = await Promise.all([
-        runNodeExecutable('dist/cli/dotenv-subst.js', ['--help']),
-        runNodeExecutable('node_modules/.bin/dotenvx', ['run', '--help']),
+    beforeAll(async () => {
+      dotenvxHelpStdout = await runNodeExecutable('node_modules/.bin/dotenvx', [
+        'run',
+        '--help',
       ]);
     });
 
-    sharedOptsEntries.map(([optionFlag, optionRegExp]) => {
-      it(`specifications for ${optionFlag} should match`, () => {
-        expect(dotenvxStdout).toMatch(optionRegExp);
-        expect(dotenvSubstStdout).toMatch(optionRegExp);
+    [
+      config.opts.envFile,
+      config.opts.envKeysFile,
+      config.opts.overload,
+      config.opts.convention,
+    ].map(({ long, flags, description }) => {
+      it(`${long.replace(/^--/, '')} option info should match`, () => {
+        const parsedDescription = description
+          .replace(/\S\[2m — forwarded.+/, '')
+          .replace(/[.()[\]\\]/g, '\\$&')
+          .replace(/\s+/g, '\\s+');
+        const optionRegExp = new RegExp(
+          `${flags}\\s+${parsedDescription}`,
+          'm',
+        );
+
+        expect(dotenvxHelpStdout).toMatch(optionRegExp);
       });
     });
   });

@@ -32,7 +32,7 @@ interface E2eTestFilesSetup<T> {
   readonly output: T;
 }
 
-interface E2eTestFileNormalizedSetup {
+export interface E2eTestFileNormalizedSetup {
   readonly path: string;
   readonly content: string;
 }
@@ -41,6 +41,8 @@ interface E2eTestFileNormalizedSetup {
  * Setup object for e2e test cases.
  */
 export class E2eTestConfig {
+  public readonly fileName: string;
+  public readonly testName: string;
   public readonly displayCmd: string;
   public readonly cmdArgv: string[];
   public readonly files: E2eTestFilesSetup<E2eTestFileNormalizedSetup[]>;
@@ -48,7 +50,7 @@ export class E2eTestConfig {
   public readonly hash: string;
   private resolvedCmd: string;
 
-  constructor({ cmd, files }: E2eTestConfigConstructorParam) {
+  constructor({ cmd, files }: E2eTestConfigConstructorParam, filename: string) {
     this.displayCmd = cmd.trim();
     this.resolvedCmd = this.displayCmd;
     this.hash = this.getTestHash(this.resolvedCmd);
@@ -58,6 +60,8 @@ export class E2eTestConfig {
       output: this.normalizeTestFiles(files.output),
     };
     this.cmdArgv = this.parseTestCmdArgv(this.resolvedCmd);
+    this.fileName = this.parseFilename(filename);
+    this.testName = this.parseTestName(this.fileName);
   }
 
   private getTestHash(cmd: string): string {
@@ -94,5 +98,13 @@ export class E2eTestConfig {
       .replace(/^dotenv-?subst/, '')
       .split(/\s+/)
       .filter((arg) => arg !== '');
+  }
+
+  private parseFilename(filename: string): string {
+    return filename.replace(/^\S+\//, '').replace(/\.\S+$/, '');
+  }
+
+  private parseTestName(filename: string): string {
+    return filename.replace(/_+/g, ' ');
   }
 }

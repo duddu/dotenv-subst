@@ -22,6 +22,7 @@ const program = new Command()
   .addOption(config.opts.ignoreUnsetVars)
   .addOption(config.opts.encoding.argParser(parseEncoding))
   .addOption(config.opts.envKeysFile)
+  .addOption(config.opts.overload)
   .addOption(config.opts.convention)
   .addOption(config.opts.verbose.conflicts(config.opts.quiet.name()))
   .addOption(config.opts.quiet.conflicts(config.opts.verbose.name()))
@@ -38,6 +39,7 @@ const {
   ignoreUnsetVars,
   encoding,
   envKeysFile,
+  overload,
   convention,
   verbose,
   quiet,
@@ -50,6 +52,7 @@ await main({
   ignoreUnsetVars,
   encoding,
   envKeysFile,
+  overload,
   convention,
   quiet,
   verbose,

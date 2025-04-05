@@ -2,7 +2,7 @@ import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { getE2eFixtures } from './e2e-fixtures.js';
+import { e2eFixtures } from './e2e-fixtures.js';
 
 const argvGetterMock = vi.fn();
 
@@ -18,13 +18,13 @@ vi.mock('node:process', async (importOriginal) => {
 });
 
 describe('cli', async () => {
-  (await getE2eFixtures()).map((fixture) => {
-    describe(`${fixture.name}`, () => {
+  e2eFixtures.map((config) => {
+    describe(`${config.testName}`, () => {
       beforeAll(async () => {
-        await rm(fixture.config.root, { recursive: true, force: true });
+        await rm(config.root, { recursive: true, force: true });
 
         await Promise.all(
-          fixture.config.files.input.map(async ({ path, content }) => {
+          config.files.input.map(async ({ path, content }) => {
             await mkdir(dirname(path), { recursive: true });
             await writeFile(path, content, { flush: true });
           }),
@@ -33,23 +33,17 @@ describe('cli', async () => {
 
       beforeEach(async () => {
         vi.resetAllMocks();
-        vi.mocked(argvGetterMock).mockReturnValue(fixture.config.cmdArgv);
+        vi.mocked(argvGetterMock).mockReturnValue(config.cmdArgv);
 
-        try {
-          const invalidationToken =
-            fixture.config.hash + vi.getRealSystemTime();
-          await vi.importActual(
-            `../../src/cli/dotenv-subst.js?${invalidationToken}`,
-          );
-        } catch (e) {
-          console.error(e);
-          expect.fail('failed to import cli executable module');
-        }
+        const invalidationToken = config.hash + vi.getRealSystemTime();
+        await vi.importActual(
+          `../../src/cli/dotenv-subst.js?${invalidationToken}`,
+        );
       });
 
       it('should write to file', async () => {
         await Promise.all(
-          fixture.config.files.output.map(async ({ path, content }) => {
+          config.files.output.map(async ({ path, content }) => {
             let outputContent: Buffer;
             try {
               outputContent = await readFile(path);

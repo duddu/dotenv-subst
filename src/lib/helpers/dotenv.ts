@@ -14,7 +14,7 @@ const dotenvConfigOptionsDefaults: PickRequired<
   'strict' | 'overload' | 'ignore' | 'processEnv'
 > = Object.freeze({
   strict: true,
-  overload: true,
+  overload: false,
   ignore: [],
   processEnv: {},
 });
@@ -33,7 +33,6 @@ export function getDotenvParseOutput(
     Pick<DotenvConfigOptions, 'path' | 'encoding'>,
 ): Readonly<DotenvParseOutput> {
   const dotenvConfigOptions = getDotenvConfigOptionsWithDefaults(options);
-  logger.info('dotenvConfigOptions', { options });
 
   const { error, parsed } = dotenvConfig(dotenvConfigOptions);
 
@@ -55,7 +54,7 @@ export function getDotenvParseOutput(
     );
   }
 
-  logger.info('dotenvConfigOptions', { parsed });
+  logger.debug('DotenvConfigOptions', parsed);
 
   return Object.freeze<DotenvParseOutput>(parsed);
 }
