@@ -1,3 +1,4 @@
+import { env } from 'node:process';
 import {
   configDefaults,
   coverageConfigDefaults,
@@ -14,9 +15,7 @@ export default defineConfig({
       provider: 'v8',
     },
     exclude: [...configDefaults.exclude, 'dist/**/*'],
-    reporters: process.env.GITHUB_ACTIONS
-      ? ['verbose', 'github-actions']
-      : ['verbose'],
+    reporters: ['verbose', ...(env.GITHUB_ACTIONS ? ['github-actions'] : [])],
     slowTestThreshold: 400,
     watch: false,
   },
