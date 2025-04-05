@@ -1,4 +1,4 @@
-name: CodeQL
+name: Code Analysis
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  analyze:
-    name: Analyze (${{ matrix.language }})
+  codeql:
+    name: CodeQL (${{ matrix.language }})
     runs-on: ubuntu-latest
     timeout-minutes: 120
     permissions:
@@ -34,9 +34,9 @@ jobs:
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
-          config: |
-            paths-ignore:
-              - docs
+          # config: |
+          #   paths-ignore:
+          #     - docs
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3

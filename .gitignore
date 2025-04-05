@@ -5,7 +5,6 @@
 .npm
 .vscode
 .vscode-test
-.vuepress/dist
 *.lcov
 *.log
 *.log*
@@ -17,6 +16,8 @@
 /dist/
 /tmp/
 coverage
+docs/.vitepress/cache
+docs/.vitepress/dist
 lib-cov
 logs
 node_modules/
