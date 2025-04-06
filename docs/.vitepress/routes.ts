@@ -2,7 +2,7 @@ import type { DefaultTheme } from 'vitepress';
 
 import { cliExamplesSidebarItems } from '../cli-examples/[example].paths.js';
 
-export const sidebarItems = {
+export const routes = {
   introduction: {
     text: 'Introduction',
     link: '/introduction',

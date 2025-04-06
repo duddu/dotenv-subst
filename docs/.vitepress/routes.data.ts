@@ -1,12 +1,12 @@
 import { defineLoader } from 'vitepress';
 
-import { sidebarItems } from './routes.js';
+import { routes } from './routes.js';
 
-export type SidebarItemsData = typeof sidebarItems;
+export type RoutesConfigData = typeof routes;
 
-declare const data: SidebarItemsData;
+declare const data: RoutesConfigData;
 export { data };
 
 export default defineLoader({
-  load: (): SidebarItemsData => sidebarItems,
+  load: (): RoutesConfigData => routes,
 });
