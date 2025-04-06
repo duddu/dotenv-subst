@@ -17,6 +17,9 @@ export default defineConfig({
   head,
   themeConfig,
   transformPageData,
+  sitemap: {
+    hostname: 'https://dotenv-subst.duddu.dev',
+  },
   markdown: {
     config(md) {
       md.use(groupIconMdPlugin);
