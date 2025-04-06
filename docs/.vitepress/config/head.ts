@@ -1,6 +1,6 @@
 import type { HeadConfig } from 'vitepress';
 
-import pkg from '../../src/shared/package.js';
+import pkg from '../../../src/shared/package.js';
 
 const themeColor = '#3dd68c';
 const googleTagId = 'G-QWHYNP1ET6';

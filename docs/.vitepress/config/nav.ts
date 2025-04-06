@@ -1,7 +1,7 @@
 import type { DefaultTheme } from 'vitepress';
 
-import pkg from '../../src/shared/package.js';
-import { routes } from './routes.js';
+import pkg from '../../../src/shared/package.js';
+import { routes } from '../routes.js';
 
 const githubRepoUrl = 'https://github.com/duddu/dotenv-subst';
 const npmPackageUrl = 'https://www.npmjs.com/package/dotenv-subst';
