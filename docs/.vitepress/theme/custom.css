@@ -43,3 +43,7 @@
 .vp-doc h1 + table {
   margin-top: 24px;
 }
+
+.VPFooter a {
+  color: var(--vp-c-text-2);
+}

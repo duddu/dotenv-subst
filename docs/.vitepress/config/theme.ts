@@ -21,4 +21,10 @@ export const themeConfig: DefaultTheme.Config = {
       items: [routes.cliUsage, routes.cliOptions, routes.cliExamples],
     },
   ],
+  footer: {
+    message:
+      'Released under the BSD-3-Clause <a href="https://github.com/duddu/dotenv-subst/blob/main/LICENSE" target="_blank" rel="noopener">License</a>.',
+    copyright:
+      'Copyright © 2025-present <a href="https://github.com/duddu" target="_blank" rel="noopener">duddu</a>',
+  },
 };
