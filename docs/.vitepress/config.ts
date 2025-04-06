@@ -6,6 +6,7 @@ import {
 
 import pkg from '../../src/shared/package.js';
 import { head } from './head.js';
+import { nav, socialLinks } from './nav.js';
 import { routes } from './routes.js';
 
 const themeConfig: DefaultTheme.Config = {
@@ -13,16 +14,8 @@ const themeConfig: DefaultTheme.Config = {
   externalLinkIcon: true,
   editLink: void 0,
   search: { provider: 'local' },
-  nav: [
-    {
-      text: 'CLI Options Reference',
-      link: routes.cliOptions.link,
-    },
-  ],
-  socialLinks: [
-    { icon: 'npm', link: 'https://www.npmjs.com/package/dotenv-subst' },
-    { icon: 'github', link: 'https://github.com/duddu/dotenv-subst' },
-  ],
+  nav,
+  socialLinks,
   sidebar: [
     {
       text: 'Getting Started',
