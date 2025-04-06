@@ -5,7 +5,7 @@
     "@semantic-release/release-notes-generator",
     "@semantic-release/npm",
     ["@semantic-release/git", {
-      "message": "chore(npm): update version to ${nextRelease.version} [skip ci]"
+      "message": "chore(npm): bump version to ${nextRelease.version}"
     }],
     "@semantic-release/github"
   ]
