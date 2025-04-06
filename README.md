@@ -6,7 +6,7 @@ A CLI tool and library for **interpolating variables in any file**, using `.env`
 It leverages [Dotenvx](https://dotenvx.com) to read variables values from file(s) and applies them to interpolate any provided static file(s). This allows you to use variables from `key=value` configuration files in both **runtime** code *and* **build-time** files—where it wouldn't be possible to access those variables from the runtime environment.
 <!-- #endregion intro -->
 
-<!-- TODO link to docs site -->
+📖 **Check out the dedicated [documentation site](https://dotenv-subst.duddu.dev)**.
 
 ## 🚀 Features
 
@@ -38,12 +38,12 @@ Each positional argument is interpreted as the path to a source file containing 
 <!-- #region cli-basic-example -->
 With these files in your working directory:
 
-📄 `.env.test`
+📄 `./.env.test`
 ```properties
 USERNAME=jaydoe
 GREETING=Hello
 ```
-📄 `my-test-file.md`
+📄 `./my-test-file.md`
 ```markdown
 {{GREETING}}, my name is ${USERNAME}.
 ```
@@ -56,13 +56,13 @@ dotenv-subst --env-file=.env.test my-test-file.md
 
 Updates the file with the interpolated content:
 
-📄 `my-test-file.md`
+📄 `./my-test-file.md`
 ```markdown
 Hello, my name is jaydoe.
 ```
 <!-- #endregion cli-basic-example -->
 
-### Custom Output File Example
+### Custom Output File Path Example
 
 Given the same starting files of the [previous example](#in-place-replacement-example), if the following command is run instead:
 
@@ -70,10 +70,10 @@ Given the same starting files of the [previous example](#in-place-replacement-ex
 dotenv-subst --env-file=.env.test --output=my-output.md my-test-file.md
 ```
 
-The interpolated output is written to `my-output.md`, while `my-test-file.md` is left intact.
+The interpolated output is written to `my-output.md`, while the original source file `my-test-file.md` is left intact.
 
 > [!TIP]
-> For a more comprehensive list of **usage examples**, head over to the [CLI Examples](https://dotenv-subst.duddu.dev/cli-examples) section of the documentation website.
+> 📖 For a more comprehensive **list of usage examples**, head over to the dedicated [CLI Usage Examples](https://dotenv-subst.duddu.dev/cli-examples) section of the documentation site.
 
 ### 🛠️ CLI Options
 
@@ -89,11 +89,11 @@ The interpolated output is written to `my-output.md`, while `my-test-file.md` is
 | `--convention <name>`        | `undefined`             | Load a .env convention (available conventions: `['nextjs', 'flow']`)<br/><sub>ℹ️ Forwarded to dotenvx without additional processing</sub>            |
 | `-v, --verbose`              | `false`                 | Sets log level to verbose<br/><sub>ℹ️ Both used internally and forwarded to dotenvx</sub>                                                            |
 | `-q, --quiet`                | `false`                 | Sets log level to error<br/><sub>ℹ️ Both used internally and forwarded to dotenvx</sub>                                                              |
-| `-V, --version`              | –                       | Output the version number                                                                                                                           |
-| `-h, --help`                 | –                       | Display help for command                                                                                                                            |
+| `-V, --version`              | –                       | Output the package version number                                                                                                                   |
+| `-h, --help`                 | –                       | Display help info for the command                                                                                                                   |
 <!-- #endregion cli-options-table -->
 
-For more details on **options forwarded to** `dotenvx`, see the official [Dotenvx CLI Documentation](https://dotenvx.com/docs/advanced#cli).
+For more details on **options forwarded to** `dotenvx`, see the official [Dotenvx CLI Docs](https://dotenvx.com/docs/advanced#cli).
 
 ## ✍️ Variable Interpolation Syntaxes
 
