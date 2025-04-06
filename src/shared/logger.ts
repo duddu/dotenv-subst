@@ -1,4 +1,5 @@
 import * as console from 'node:console';
+import { stderr, stdout } from 'node:process';
 import { styleText } from 'node:util';
 
 import pkg from '../shared/package.js';
@@ -65,7 +66,8 @@ function getStyledLog(param: unknown, level: Level): unknown {
     ? styleText(
         loggerColors[level],
         param,
-        // @TODO { stream: stderr }
+        // @ts-expect-error @types/node 22.14
+        { stream: level === 'error' ? stderr : stdout },
       )
     : param;
 }
